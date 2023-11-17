@@ -1,3 +1,5 @@
+<img src="images/dragonfire_ball_logo.png" alt="DragonFire Ball Logo" style="display: block; margin-left: auto; margin-right: auto; border-radius: 50%;" width="200"/>
+
 # DragonFire Ball Game Documentation
 
 ## Game Description
