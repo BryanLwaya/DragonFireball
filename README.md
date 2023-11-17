@@ -3,7 +3,7 @@
 </p>
 
 
-# DragonFire Ball Game Documentation
+# dragonfire ball
 
 ## Game Description
 **DragonFire Ball** is an engaging 2D platformer game where the player navigates a dragon character through various levels filled with enemies and traps. The dragon exhibits a range of dynamic features such as movement, jumping, wall jump and slide, shooting, and a basic stat system to track its progress.
