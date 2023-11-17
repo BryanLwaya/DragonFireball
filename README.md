@@ -1,79 +1,53 @@
-<p align="center"><img src="resources/app_icon.png" alt="VisioZoezi" width="150px"></p>
+# DragonFire Ball Game Documentation
 
-<p align="center"> 
-<img  src="https://img.shields.io/badge/-KOTLIN-013200?logo=kotlin&logoColor=green&style=for-the-badge">
-<img  src="https://img.shields.io/badge/-ANDROID-013200?logo=android&logoColor=green&style=for-the-badge">
-<img  src="https://img.shields.io/badge/-WINDOWS-013200?logo=windows&logoColor=green&style=for-the-badge">
-<img  src="https://img.shields.io/badge/-UBUNTU-013200?logo=linux&logoColor=green&style=for-the-badge">
-</p>
+## Game Description
+**DragonFire Ball** is an engaging 2D platformer game where the player navigates a dragon character through various levels filled with enemies and traps. The dragon exhibits a range of dynamic features such as movement, jumping, wall jump and slide, shooting, and a basic stat system to track its progress.
 
-# VisioZoezi
+## Features
+- **Movement**: Fluid and responsive control over the dragon's movement.
+- **Jumping**: Ability to perform standard jumps.
+- **Wall Jump and Slide**: Special mechanics to interact with walls, enabling the dragon to jump off them or slide down.
+- **Shooting**: Dragons can shoot fireballs to defeat enemies.
+- **Enemies and Traps**: Each level is populated with various enemies and traps to challenge the player.
+- **Basic Stat System**: Tracks the player's stats like health and score.
+- **Multiple Levels**: A variety of levels that increase in difficulty as the game progresses.
 
-A compose multiplatform fitness application. The application utilizes [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html) to share code and [Compose Multiplatform](https://www.jetbrains.com/lp/compose-mpp/) to share user interfaces between different platforms.
+## Development Stack
+- **Unity Hub (version 2022 LTS)**: The main platform for developing the game. [Access Unity Hub](https://unity.com/download)
+- **WebGL**: Used to render the 2D template and for game deployment on web browsers.
+- **C# (C Sharp)**: The programming language used for scripting the game behavior.
+- **Microsoft Visual Studio**: The Integrated Development Environment (IDE) for writing and managing code. [Access Microsoft Visual Studio](https://code.visualstudio.com/download)
 
-## Table of contents
-- [Libraries](##libraries-used)
-- [Project Structure](##project-structure)
-  - [Modules](###modules)
-  - [Layers](###layers)
-- [Screenshots](##screenshots)
-- [Computer Vision](##computer-vision)
+<!-- ## Access Links
+If you don't have Unity and Visual Studio already installed
+- Unity Hub: [Access Unity Hub](your-unity-hub-link)
+- Microsoft Visual Studio: [Access Microsoft Visual Studio](your-visual-studio-link) -->
 
-## Prerequisites
-#### IDE
-You can either use [IntelliJ IDEA](https://www.jetbrains.com/idea/) or [Android Studio](https://developer.android.com/studio/) to develop the project.
-#### Exercise DB API
-The application utilizes [Exercise DB Api](https://rapidapi.com/justin-WFnsXH_t6/api/exercisedb/) to display list of workouts. You can obtain an API Key from [RapidAPI](https://rapidapi.com/justin-WFnsXH_t6/api/exercisedb/).
-
-## Libraries Used
-### Multiplatform Libraries
-  - [SqlDelight](https://cashapp.github.io/sqldelight/) - Multiplatform Database used for persistence
-  - [Ktor](https://ktor.io/docs/create-client.html) - Network Client
-  - [Voyager](https://voyager.adriel.cafe/) - Multiplatform navigation library
-  
-### Android Libraries
-  - [Jetpack Compose](https://developer.android.com/jetpack/compose)
-  - [Accompanist Permission](https://google.github.io/accompanist/permissions/)
-  - [Camera X](https://developer.android.com/training/camerax)
-  - [Kotlin DL](https://github.com/Kotlin/kotlindl)
-  - [Tensorflow Lite](https://www.tensorflow.org/lite)
-  - [Glide Compose](https://bumptech.github.io/glide/int/compose.html)
-  
-### Desktop Libraries
-  - [Compose JB](https://github.com/JetBrains/compose-jb/)
-  - [Webcam Capture](https://github.com/sarxos/webcam-capture)
-  - [Deep Learning Java](https://djl.ai/s)
-
-##### Designed Using [Material 3 Guidelines](https://m3.material.io/)
+## Platforms
+The game is built to support multiple platforms, including:
+- Android
+- WebGL
+- iOS
 
 ## Project Structure
-### Modules
-The project contains 3 main modules:
+Below is the project structure outlining the various directories and their contents:
 
-#### [Common](https://github.com/BKMbigo/VisioZoezi/tree/main/common) - Manages code sharing between platform. 
-The module contains the following sub-modules
-  - CommonMain - Contains shared code.
-  - CommonTest
-  - AndroidMain
-  - AndroidTest
-  - DesktopMain
-  - DesktopTest
-#### [Android](https://github.com/BKMbigo/VisioZoezi/tree/main/android) - Contains Android code
-#### [Desktop](https://github.com/BKMbigo/VisioZoezi/tree/main/desktop) - Contains Desktop-specific code
-
-### Layers
-The application is divided into four modules:
-  - Data Layer
-  - Domain Layer
-  - ML Layer
-  - Presentation Layer
-
-## Screenshots
-<p align="center"><img src="resources/home_screen_android_dark.png" alt="VisioZoezi" width="200px"></p>
-
-## Computer Vision
-### Camera Capture
-Camera capture is achieved using [Camera X](https://developer.android.com/training/camerax) on Android and [Webcam Capture](https://github.com/sarxos/webcam-capture) on desktop JVM's. The use of Webcam Capture, requires the use of Swing Panel, which overlays over Compose Components, thus disabling preview of pose detection results.
-
-### Pose Estimation
-The project was aimed at utilizing computer vision techniques, particularly pose estimation and classification to assist in fitness tracking. Pose estimation utilizes [Movenet Singlepose Lightning](https://tfhub.dev/google/movenet/singlepose/lightning/4) to infer human pose from images captures from the camera. The model was implemented using [Kotlin-DL](https://github.com/Kotlin/kotlindl) and [DeepLearningJava](https://djl.ai/s) on JVM. The use of different frameworks was due to issues encountered while using one framework to instantiating models on different platforms.
+```
+DragonFireBall/
+├── Assets/
+│   ├── Animation/
+│   ├── Audio/
+│   ├── Fonts/
+│   ├── Levels/
+│   ├── Prefabs/
+│   ├── Scenes/
+│   ├── Scripts/
+│   └── Sprites/
+├── Packages/
+├── ProjectSettings/
+├── Recordings/
+├── UserSettings/
+├── .gitignore
+├── .vsconfig
+└── README.md
+```
