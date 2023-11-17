@@ -1,0 +1,10 @@
+using UnityEngine;
+
+[CreateAssetMenu(fileName = "NewSettings", menuName = "CustomSettings", order = 1)]
+public class CustomSettings : ScriptableObject
+{
+    public int someInteger;
+    public float someFloat;
+    public string someString;
+    public Color someColor;
+}
