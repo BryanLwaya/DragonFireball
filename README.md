@@ -1,6 +1,7 @@
 <p align="center">
-  <img src="images/dragonfire_ball_logo.png" alt="DragonFire Ball Logo" width="200"/>
+  <img src="images/dragonfire_ball_logo.png" alt="DragonFire Ball Logo" width="200" style="border-radius: 50%;"/>
 </p>
+
 
 # DragonFire Ball Game Documentation
 
