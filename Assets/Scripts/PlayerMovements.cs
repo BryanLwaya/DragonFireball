@@ -10,6 +10,7 @@ public class PlayerMovements : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask wallLayer;
     [SerializeField] private float speed;
+    [SerializeField] private float jumpPower;
 
     private float wallJumpCooldown;
 
@@ -36,9 +37,6 @@ public class PlayerMovements : MonoBehaviour
 
         if (wallJumpCooldown < 0.2f)
         {
-            if (Input.GetKey(KeyCode.Space) && isGrounded())
-                Jump();
-
             body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
 
             if (onWall() && !isGrounded())
@@ -49,6 +47,9 @@ public class PlayerMovements : MonoBehaviour
             else
                 body.gravityScale = 3;
 
+            if (Input.GetKey(KeyCode.Space))
+                Jump();
+
         }
         else
             wallJumpCooldown *= Time.deltaTime;
@@ -57,8 +58,16 @@ public class PlayerMovements : MonoBehaviour
 
     private void Jump()
     {
-        body.velocity = new Vector2(body.velocity.x, speed);
-        animator.SetTrigger("jump");
+        if(isGrounded())
+        {
+            body.velocity = new Vector2(body.velocity.x, jumpPower);
+            animator.SetTrigger("jump");
+        }else if(onWall() && !isGrounded())
+        {
+            wallJumpCooldown = 0;
+            body.velocity = new Vector2(-Mathf.Sign(transform.localScale.x) * 3, 6);
+        }
+       
        
     }
 

@@ -432,6 +432,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   speed: 10
+  jumpPower: 20
 --- !u!95 &407814130
 Animator:
   serializedVersion: 5
