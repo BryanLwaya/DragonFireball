@@ -11,6 +11,7 @@ public class PlayerMovements : MonoBehaviour
     [SerializeField] private LayerMask wallLayer;
     [SerializeField] private float speed;
     [SerializeField] private float jumpPower;
+    private float horizontalInput;
 
     private float wallJumpCooldown;
 
@@ -23,7 +24,7 @@ public class PlayerMovements : MonoBehaviour
 
     private void Update()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
+        horizontalInput = Input.GetAxis("Horizontal");
         
 
         //flip player when moving left and right
@@ -64,8 +65,16 @@ public class PlayerMovements : MonoBehaviour
             animator.SetTrigger("jump");
         }else if(onWall() && !isGrounded())
         {
+            if(horizontalInput == 0)
+            {
+                body.velocity = new Vector2(-Mathf.Sign(transform.localScale.x) * 10, 0);
+                transform.localScale = new Vector3(-Mathf.Sign(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+            }
+            else
+                body.velocity = new Vector2(-Mathf.Sign(transform.localScale.x) * 3, 6);
+
             wallJumpCooldown = 0;
-            body.velocity = new Vector2(-Mathf.Sign(transform.localScale.x) * 3, 6);
+            
         }
        
        
