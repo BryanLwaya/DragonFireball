@@ -9,9 +9,9 @@ public class PlayerMovements : MonoBehaviour
     private BoxCollider2D boxCollider2D;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask wallLayer;
-
-
     [SerializeField] private float speed;
+
+    private float wallJumpCooldown;
 
     private void Awake()
     {
@@ -23,7 +23,7 @@ public class PlayerMovements : MonoBehaviour
     private void Update()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
-        body.velocity = new Vector2(horizontalInput*speed, body.velocity.y);
+        
 
         //flip player when moving left and right
         if(horizontalInput > 0.01f)
@@ -31,15 +31,28 @@ public class PlayerMovements : MonoBehaviour
         else if (horizontalInput < -0.01f)
             transform.localScale = new Vector3(-1,1,1);
 
-
-        if (Input.GetKey(KeyCode.Space) && isGrounded())
-            Jump();
-
         animator.SetBool("run", horizontalInput != 0);
         animator.SetBool("grounded", isGrounded());
 
-        print(onWall());
-        
+        if (wallJumpCooldown < 0.2f)
+        {
+            if (Input.GetKey(KeyCode.Space) && isGrounded())
+                Jump();
+
+            body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
+
+            if (onWall() && !isGrounded())
+            {
+                body.gravityScale = 0;
+                body.velocity = Vector2.zero;
+            }
+            else
+                body.gravityScale = 3;
+
+        }
+        else
+            wallJumpCooldown *= Time.deltaTime;
+
     }
 
     private void Jump()
