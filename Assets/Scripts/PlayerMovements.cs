@@ -8,6 +8,7 @@ public class PlayerMovements : MonoBehaviour
     private Animator animator;
     private BoxCollider2D boxCollider2D;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private LayerMask wallLayer;
 
 
     [SerializeField] private float speed;
@@ -36,6 +37,8 @@ public class PlayerMovements : MonoBehaviour
 
         animator.SetBool("run", horizontalInput != 0);
         animator.SetBool("grounded", isGrounded());
+
+        print(onWall());
         
     }
 
@@ -54,6 +57,12 @@ public class PlayerMovements : MonoBehaviour
     private bool isGrounded()
     {
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider2D.bounds.center, boxCollider2D.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
+        return raycastHit.collider != null;
+    }
+
+    private bool onWall()
+    {
+        RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider2D.bounds.center, boxCollider2D.bounds.size, 0, new Vector2(transform.localScale.x,0), 0.1f, wallLayer);
         return raycastHit.collider != null;
     }
 }
